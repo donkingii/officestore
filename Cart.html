@@ -1,89 +1,87 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Your Cart - Office Supply Shop</title>
-        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        <link href="/Content/site.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+<html ng-app="ngCart">
+<head>
+    <title>Office Supply Shop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="cart stuff/dist/ngCart.js"></script>
+    <script src="cart stuff/src/ngCart.js"></script>
+    <script src="cart stuff/src/ngCart.directives.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-controller="CartController">
+        <div class="row">
+            <div class="cols-xs-offset-8 col-xs-4">
+                <h3>
+                    Summary<span></span>
+                </h3>
+                <ngcart-summary></ngcart-summary>
+            </div>
+        </div>
+        <hr />
 
-        <script src="/Scripts/modernizr-2.6.2.js"></script>
-
-    </head>
-    <body>
-        <header>
-<div id="cart">
-    <span class="caption">
-        <b>Your Cart:</b>
-        0 item(s),
-        $0.00
-    </span>
-
-    <a href="/Cart.html?returnUrl=%2FCart%3FreturnUrl%3D%252FProduct%252FList">Checkout</a>
-</div>
-
-            <div class="content-wrapper">
-                <!--<div class="float-left">
-                    <p class="site-title"><a href="/Home.html">Office Supply Shop</a></p>
-                </div>-->
-                <!--<li class="float-right">
-                    <section id="login">
-                            
-        Hello, <a class="username" href="/Account/Manage" title="Manage">donkingii</a>!
-<form action="/Account/LogOff" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="B9a07u3czKfGIVFESgmZCHL3ONJwTpZXp5-2BcXRXU_2uJjrYCygf2oVb0HJ16_hsjsTNQo7UnpNiPuLRz99DHhjQeaFOfCAEYNeW8Fiauw1" />            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-</form>    
-
-                    </section>-->
-                    <br />
-                    <br />
-                    <nav id="navigation">
-                        <ul>
-                            <li>
-                                <a href="/index.html">Home</a>
-                                <!--<a href="/Home/About">About</a>
-                <a href="/Home/Contact">Contact</a>
+        <nav id="navigation">
+            <ul>
+                <li>
+                    <a href="/Products.html">Home</a>
+                    <a href="/About.html">About</a>
+                    <a href="/Cart.html">Cart</a>
+                    <!--<a href="/Home/Contact">Contact</a>
                 <a href="/index.html">Products</a>-->
-                            </li>
+                </li>
 
-                        </ul>
-                    </nav>
+            </ul>
+        </nav>
+        <!--<h3>Add to Cart<span>(ngcart-addtocart)</span></h3>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <h4>Pens</h4>
+                <p> $10.99</p>
+                <ngcart-addtocart id="item1" name="My Item #1" price="10.99" quantity="1" quantity-max="5">Add to Cart</ngcart-addtocart>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <h4>Pencils</h4>
+                <p> $15.29</p>
+                <ngcart-addtocart id="item1" name="My Item #1" price="10.99" quantity="1" quantity-max="5">Add to Cart</ngcart-addtocart>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <h4>Paper</h4>
+                <p> $25.75</p>
+                <ngcart-addtocart id="item1" name="My Item #1" price="10.99" quantity="1" quantity-max="5">Add to Cart</ngcart-addtocart>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <h4>Highlighters</h4>
+                <p> $29.25</p>
+                <ngcart-addtocart id="item1" name="My Item #1" price="10.99" quantity="1" quantity-max="5">Add to Cart</ngcart-addtocart>
+            </div>
+        </div>
+        <hr />-->
+        <h3>Cart <span></span></h3>
+
+        <ngcart-cart></ngcart-cart>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3>Checkout <span></span></h3>
+
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <h4>service 'log'</h4>
+                        <ngcart-checkout service="log">Checkout</ngcart-checkout>
+                    </div>
+                    <div class="col-xs-4">
+                        <h4>service 'http'</h4>
+                        <ngcart-checkout service="http" settings="httpSettings">Checkout </ngcart-checkout>
+                    </div>
+
                 </div>
-            
-        </header>
-        <div id="body">
-            
-            <section class="content-wrapper main-content clear-fix">
-                
 
-<h2>Your Cart</h2>
-<table width="90%" align="center">
-    <thead>
-        <tr>
-            <th align="center">Quantity</th>
-            <th align="left">Item</th>
-            <th align="right">Price</th>
-            <th align="right">Subtotal</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3" align="right">Total:</td>
-            <td align="right">
-                $0.00
-            </td>
-        </tr>
-    </tfoot>
-</table>
-
-<p align="center" class="actionButtons">
-    <a href="/index.html">Continue shopping</a>
-    <a href="/Checkout.html">Checkout now</a>
-</p>
-            </section>
+            </div>
         </div>
         <footer>
             <div class="content-wrapper">
@@ -92,17 +90,6 @@
                 </div>
             </div>
         </footer>
-
-        <script src="/Scripts/jquery-1.8.2.js"></script>
-
-        
-    
-<!-- Visual Studio Browser Link -->
-<script type="application/json" id="__browserLink_initializationData">
-    {"appName":"Firefox","requestId":"089261e3b15c47fd9f9ce4883c90c16a"}
-</script>
-<script type="text/javascript" src="http://localhost:52726/f8304bd729ed4797aeeb6a17141d6f60/browserLink" async="async"></script>
-<!-- End Browser Link -->
-
+    </div>
 </body>
 </html>
